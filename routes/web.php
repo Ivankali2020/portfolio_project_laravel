@@ -22,6 +22,10 @@ Route::group(['middleware' => ['auth']],function (){
     Route::resource('blogCategories',\App\Http\Controllers\BlogCategoryController::class);
     Route::resource('user',\App\Http\Controllers\UserController::class);
     Route::resource('project',\App\Http\Controllers\ProjectController::class);
+    Route::resource('blog',\App\Http\Controllers\BlogController::class);
+    Route::get('projectShow/{id}',[\App\Http\Controllers\ProjectController::class,'projectShow'])->name('projectShow');
+    Route::get('blogShow/{slug}',[\App\Http\Controllers\BlogController::class,'blogShow'])->name('blogShow');
+
     Route::resource('projectPhoto',\App\Http\Controllers\ProjectPhotoController::class);
     Route::post('/user/upgradeAdmin', [\App\Http\Controllers\UserController::class, 'upgradeAdmin'])->name('user.upgradeAdmin');
 

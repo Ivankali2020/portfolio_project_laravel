@@ -70,7 +70,30 @@
     }
 
 
-    console.log('this is main js');
+    let blogContainer = select('.blog-container');
+    console.log('hello');
+    if (blogContainer) {
+        let blogIsotope = new Isotope(blogContainer, {
+            itemSelector: '.blog-item'
+        });
+
+        let blogFilters = select('#blog-filters li', true);
+
+        on('click', '#blog-filters li', function(e) {
+            e.preventDefault();
+            blogFilters.forEach(function(el) {
+                el.classList.remove('filter-active');
+            });
+            this.classList.add('filter-active');
+
+            blogIsotope.arrange({
+                filter: this.getAttribute('blog-filter')
+            });
+            blogIsotope.on('arrangeComplete', function() {
+                AOS.refresh()
+            });
+        }, true);
+    }
     /**
      * Porfolio isotope and filter
      */
@@ -101,6 +124,8 @@
         }
 
     // });
+
+
 
     /**
      * Initiate portfolio lightbox

@@ -1,6 +1,6 @@
 @extends('Backend.layout.app')
-@section('title') Product @endsection
-@section('product_index_active','mm-active')
+@section('title') Blog @endsection
+@section('blog_index_active','mm-active')
 @section('content')
     <div class="app-page-title ">
         <div class="page-title-wrapper">
@@ -9,7 +9,7 @@
                     <i class="pe-7s-display2 icon-gradient bg-mean-fruit ">
                     </i>
                 </div>
-                <div class="icon-gradient bg-mean-fruit"> Product List </div>
+                <div class="icon-gradient bg-mean-fruit"> Blog List </div>
             </div>
         </div>
     </div>
@@ -24,33 +24,26 @@
                             <tr class="fw-bolder h6 ">
                                 <td>#</td>
                                 <td >Name</td>
-                                <td>Price</td>
-                                <td>Stock</td>
                                 <td>Category</td>
-                                <td>Brand</td>
                                 <td>Photo</td>
                                 <td>Control</td>
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($products as $product)
+                            @foreach($blogs as $blog)
                                 <tr>
-                                    <td>{{ $product->id }}</td>
-                                    <td >{{ $product->name }}</td>
-                                    <td>{{ $product->price }}.00 <span calss="text-right ">$</span></td>
-                                    <td>{{ $product->stock }}</td>
-                                    <td>{{ $product->category->name }} </td>
-                                    <td>{{ $product->brand->name }} </td>
-
+                                    <td>{{ $blog->id }}</td>
+                                    <td >{{ $blog->name }}</td>
+                                    <td>{{ $blog->category->name  }}</td>
                                     <td class="text-center ">
-                                        <img src="{{ asset('storage/productPhoto/'.$product->photo) }}" width="50px" alt="">
+                                        <img src="{{ asset('storage/blogPhoto/'.$blog->photo) }}" width="50px" alt="">
                                     </td>
                                     <td>
-                                        <a href="{{ route('product.edit',$product->id) }}" class="pe-7s-pen h4 "></a>
-                                        <a href="{{ route('product.show',$product->id) }}" class="pe-7s-info h4 mx-3   "></a>
-                                        <form class="d-inline "  id="deleteProduct{{$product->id}}" action="{{ route('product.destroy',$product->id) }}" method="post">
+                                        <a href="{{ route('blog.edit',$blog->id) }}" class="pe-7s-pen h4 "></a>
+                                        <a href="{{ route('blog.show',$blog->id) }}" class="pe-7s-info h4 mx-3   "></a>
+                                        <form class="d-inline "  id="deleteProduct{{$blog->id}}" action="{{ route('blog.destroy',$blog->id) }}" method="post">
                                             @csrf @method('delete')
-                                            <span style="cursor: pointer" onclick="allow('{{ $product->name }}',{{ $product->id }})"> <i class="pe-7s-trash h4 "></i> </span>
+                                            <span style="cursor: pointer" onclick="allow('{{ $blog->name }}',{{ $blog->id }})"> <i class="pe-7s-trash h4 "></i> </span>
                                         </form>
                                     </td>
 
@@ -58,7 +51,7 @@
                             @endforeach
                             </tbody>
                         </table>
-                        {{  $products->links() }}
+{{--                        {{  $blogs->links() }}--}}
                     </div>
                 </div>
             </div>

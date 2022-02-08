@@ -34,12 +34,11 @@
 
                 <li class="app-sidebar__heading">Project Manager</li>
                 <x-side-bar route="{{ route('project.create') }}" sidebarname="Create Project" icon="pe-7s-magic-wand "  active="project_create_active"/>
-                <x-side-bar route="{{ route('project.index') }}" sidebarname="Product List" icon="pe-7s-menu "  active="project_index_active"/>
+                <x-side-bar route="{{ route('project.index') }}" sidebarname="Project List" icon="pe-7s-menu "  active="project_index_active"/>
 
-{{--                <li class="app-sidebar__heading">Order Manager</li>--}}
-{{--                <x-side-bar route="{{ route('order.index') }}" sidebarname=" Order List" icon="pe-7s-box2"  active="order_index_active"/>--}}
-
-
+                <li class="app-sidebar__heading">Order Manager</li>
+                <x-side-bar route="{{ route('blog.create') }}" sidebarname=" Blog Create" icon="pe-7s-menu"  active="blog_create_active"/>
+                <x-side-bar route="{{ route('blog.index') }}" sidebarname=" Blog List" icon="pe-7s-menu"  active="blog_index_active"/>
 
             </ul>
         </div>

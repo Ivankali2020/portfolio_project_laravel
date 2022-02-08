@@ -89,6 +89,11 @@ class ProjectController extends Controller
         //
     }
 
+    public function projectShow(Project $id)
+    {
+        return view('layouts.projectShow',compact('id'));
+    }
+
     /**
      * Show the form for editing the specified resource.
      *
