@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Blog;
 use App\Models\Project;
 use Illuminate\Http\Request;
 
@@ -31,7 +32,8 @@ class HomeController extends Controller
     public function welcome()
     {
         $projects = Project::with('projectCategories')->get();
-//        return $projects;
-        return view('welcome',compact('projects'));
+        $blogs = Blog::with('category')->simplePaginate(3);
+//        return $blogs;
+        return view('welcome',compact('projects','blogs'));
     }
 }
